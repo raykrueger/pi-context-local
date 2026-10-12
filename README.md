@@ -7,10 +7,12 @@ Your `AGENTS.md` is checked in and shared with the team — but you have prefere
 | `AGENTS.md` | `AGENTS.local.md` |
 | `CLAUDE.md` | `CLAUDE.local.md` |
 
-The local file is appended to the system prompt, so per-developer instructions live right next to the shared ones — and they are trivial to ignore in `.gitignore`:
+The local file is appended to the system prompt, so per-developer instructions live right next to the shared ones — while staying out of version control via your *global* git ignore file (so you never need per-repo `.gitignore` entries):
 
-```gitignore
-*.local.md
+```sh
+# Point git at a global ignore file (one-time setup)
+git config --global core.excludesFile ~/.gitignore_global
+echo "*.local.md" >> ~/.gitignore_global
 ```
 
 ## How it works
@@ -45,7 +47,7 @@ Create a local file next to your existing context file:
 echo "Use pnpm, never npm. My Go modules live in ~/src/go." > AGENTS.local.md
 ```
 
-The next session in that directory (or any descendant) includes it in the system prompt. Commit the shared `AGENTS.md`, keep the `.local.md` on disk and out of version control.
+The next session in that directory (or any descendant) includes it in the system prompt. Commit the shared `AGENTS.md`; the `.local.md` stays on disk and out of version control globally — no per-repo `.gitignore` entries needed.
 
 ## Development
 
