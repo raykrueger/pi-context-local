@@ -1,6 +1,7 @@
 {
 	"name": "pi-context-local",
 	"version": "1.0.0",
+	"description": "Appends AGENTS.local.md / CLAUDE.local.md files next to your context files to pi's system prompt",
 	"license": "Apache-2.0",
 	"private": true,
 	"type": "module",
